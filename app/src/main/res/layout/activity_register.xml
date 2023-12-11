@@ -30,7 +30,8 @@
         android:drawablePadding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reg_img"/>
+        app:layout_constraintTop_toBottomOf="@+id/reg_img"
+        android:inputType="textPassword|textMultiLine|textCapSentences"/>
 
     <EditText
         android:id="@+id/email_reg"
@@ -41,12 +42,13 @@
         android:padding="13dp"
         android:elevation="3dp"
         app:layout_constraintWidth_percent=".8"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:drawableLeft="@drawable/account"
-        android:drawablePadding="20dp"
+        android:drawablePadding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_reg"/>
+        app:layout_constraintTop_toBottomOf="@+id/name_reg"
+        android:inputType="textPassword|textMultiLine|textCapSentences"/>
 
     <EditText
         android:id="@+id/password_reg"
@@ -56,13 +58,14 @@
         android:hint="Password"
         android:padding="13dp"
         android:elevation="3dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintWidth_percent=".8"
         android:drawableLeft="@drawable/keylog"
-        android:drawablePadding="20dp"
+        android:drawablePadding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email_reg"/>
+        app:layout_constraintTop_toBottomOf="@+id/email_reg"
+        android:inputType="textPassword|textMultiLine|textCapSentences"/>
 
     <Button
         android:layout_width="150dp"

@@ -66,17 +66,14 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(userName)) {
             name.setError("Name is Required");
-            Toast.makeText(this, "Name is Required", Toast.LENGTH_SHORT).show();
             return;
         }
         if (TextUtils.isEmpty(userEmail)) {
-            email.setError("Name is Required1");
-            Toast.makeText(this, "Name is Required1", Toast.LENGTH_SHORT).show();
+            email.setError("Email is Required");
             return;
         }
         if (TextUtils.isEmpty(userPassword)) {
-            pasword.setError("Name is Required2");
-            Toast.makeText(this, "Name is Required2", Toast.LENGTH_SHORT).show();
+            pasword.setError("Password is Required");
             return;
         }
         if (userPassword.length() < 6) {
@@ -96,8 +93,9 @@ public class RegisterActivity extends AppCompatActivity {
                             //realtime database
                             String id= task.getResult().getUser().getUid();
                             database.getReference().child("Users").child(id).setValue(userModel);
-                            Toast.makeText(RegisterActivity.this,
-                                    "User Created.", Toast.LENGTH_SHORT).show();
+                            name.setText("");
+                            email.setText("");
+                            pasword.setText("");
                         }else {
                             Toast.makeText(RegisterActivity.this,
                                     "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
