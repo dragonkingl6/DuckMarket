@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import duc.thanhhoa.duckmarket.activities.HomeActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
@@ -25,7 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (auth.getCurrentUser()!=null){
             progressBar.setVisibility(View.VISIBLE);
+            startActivity(new Intent(MainActivity.this, HomeActivity.class));
             Toast.makeText(this, "User already logged in", Toast.LENGTH_SHORT).show();
+            finish();
         }
 
         //new branch develop
