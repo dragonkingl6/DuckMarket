@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "252355014649",
+    "project_id": "duckmarket-c8dff",
+    "storage_bucket": "duckmarket-c8dff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252355014649:android:555bd19d1ee9f6c3811728",
+        "android_client_info": {
+          "package_name": "duc.thanhhoa.duckmarket"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMhEs5XugTUi3rXMUwVlcQcy1vnug-sPI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
