@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,15 +27,19 @@ import java.util.List;
 import duc.thanhhoa.duckmarket.R;
 import duc.thanhhoa.duckmarket.adapter.CategoryAdapter;
 import duc.thanhhoa.duckmarket.adapter.NewProductsAdapter;
+import duc.thanhhoa.duckmarket.adapter.PopularProductsAdapter;
 import duc.thanhhoa.duckmarket.models.CategoryModel;
 import duc.thanhhoa.duckmarket.models.NewProductsModel;
+import duc.thanhhoa.duckmarket.models.PopularProductsModel;
 
 public class HomeFragment extends Fragment {
 
 
     CategoryAdapter categoryAdapter;
+    PopularProductsAdapter popularProductsAdapter;
+    List<PopularProductsModel> popularProductsModelList;
     List<CategoryModel> categoryModelList;
-    RecyclerView categoryRecycler, newProductRecycler;
+    RecyclerView categoryRecycler, newProductRecycler, popularRecycler;
     NewProductsAdapter newProductsAdapter;
     List<NewProductsModel> newProductsModelList;
     FirebaseFirestore db;
@@ -51,6 +56,7 @@ public class HomeFragment extends Fragment {
 
         categoryRecycler = root.findViewById(R.id.rec_category);
         newProductRecycler= root.findViewById(R.id.new_product_rec);
+        popularRecycler= root.findViewById(R.id.popular_rec);
         db= FirebaseFirestore.getInstance();
 
 
@@ -103,6 +109,28 @@ public class HomeFragment extends Fragment {
                }else{
                    //error
                }
+            }
+        });
+
+        //popular product
+
+        popularRecycler.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        popularProductsModelList= new ArrayList<>();
+        popularProductsAdapter= new PopularProductsAdapter(getContext(),popularProductsModelList);
+        popularRecycler.setAdapter(popularProductsAdapter);
+
+        db.collection("AllProducts").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if ((task.isSuccessful())){
+                    for(QueryDocumentSnapshot documentSnapshot: task.getResult()){
+                        PopularProductsModel popularProductsModel  = documentSnapshot.toObject(PopularProductsModel.class);
+                        popularProductsModelList.add(popularProductsModel);
+                        popularProductsAdapter.notifyDataSetChanged();
+                    }
+                }else{
+                    //error
+                }
             }
         });
         return root;
